@@ -46,9 +46,6 @@ $(document)
             $(this).attr("contenteditable", true);
         })
 
-        // $(".done-todo").click(function(){
-        //     $(".done-todo").val("change text");
-        // })
         $(document).on("click","#filters a",function(){
             if($(this).attr("data-filter") == "active"){
                 $("ol").children().filter('.checked').css('display','none');
@@ -58,7 +55,6 @@ $(document)
             }else if($(this).attr("data-filter") == "complete"){
                 $('ol').children().not(".checked").css('display','none');
                 $("ol").children().filter('.checked').css('display','');
-                // $('ol').children().not(".checked").css('display','');
             }
         })
     });
