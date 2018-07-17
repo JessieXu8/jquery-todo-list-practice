@@ -22,11 +22,10 @@ $(document)
         }
 
         // code to be implemented
-
         $("#button").click(function(){
             if($(".input-text").val()){
-                let $var = $(`<li id=${generateUUID()} class="">
-                <input name="done-todo" type="checkbox" class="done-todo"> ${$(".input-text").val()} </li>`);
+                let $var = `<li id=${generateUUID()} class="">
+                <input name="done-todo" type="checkbox" class="done-todo"> ${$(".input-text").val()} </li>`;
                 $("ol").append($var);
             }else{
                 alert("请填写需要增加的内容！");
@@ -38,6 +37,28 @@ $(document)
                 $(this).parent().addClass("checked");
             }else{
                 $(this).parent().removeClass("checked");
+            }
+        })
+
+
+
+        $(document).on("click", "ol li", function(){
+            $(this).attr("contenteditable", true);
+        })
+
+        // $(".done-todo").click(function(){
+        //     $(".done-todo").val("change text");
+        // })
+        $(document).on("click","#filters a",function(){
+            if($(this).attr("data-filter") == "active"){
+                $("ol").children().filter('.checked').css('display','none');
+                $('ol').children().not(".checked").css('display','');
+            }else if($(this).attr("data-filter") == "all"){
+                $("ol").children().css('display','');
+            }else if($(this).attr("data-filter") == "complete"){
+                $('ol').children().not(".checked").css('display','none');
+                $("ol").children().filter('.checked').css('display','');
+                // $('ol').children().not(".checked").css('display','');
             }
         })
     });
